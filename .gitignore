@@ -1,0 +1,15 @@
+
+
+# server 目录 二进制文件
+server/*.exe
+
+# server 目录 GoLand
+server/.idea/*
+
+# linux 运行文件
+
+# web 目录 node 模块
+web/node_modules/*
+
+# web 目录 WebStorm
+web/.idea/*
