@@ -1,0 +1,3 @@
+2022-07-29T15:04:03.183+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(MISSING) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(MISSING)": invalid syntax)
+2022-07-29T15:05:48.527+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(MISSING) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(MISSING)": invalid syntax)
+2022-07-29T15:08:28.461+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(int=5432) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(int=5432)": invalid syntax)

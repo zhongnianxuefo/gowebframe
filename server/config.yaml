@@ -1,0 +1,8 @@
+port: 8060
+logdirectory: ./log
+databasetype: postgres
+databasehost: 127.0.0.1
+databaseport: 5432
+databaseuser: openpg
+databasepassword: openpgpwd
+databasename: my

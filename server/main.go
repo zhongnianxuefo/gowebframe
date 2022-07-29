@@ -1,18 +1,21 @@
 package main
 
-import (
-	"flag"
-	"fmt"
-)
+// SoftwareConfigFile 配件文件
+const ConfigFile = "config.yaml"
 
 func main() {
-	var port int
 
-	flag.IntVar(&port, "p", 8060, "端口号")
-	flag.Parse()
+	InitGlobalVar(ConfigFile)
 
-	addr := fmt.Sprintf(":%d", port)
-	ginMain(addr)
+	log := GetLogger()
+	db := GetDateBase()
+
+	err := InitDataBase(db)
+	if err != nil {
+		log.Error(err)
+	}
+
+	InitGin()
 
 	return
 }

@@ -1,28 +1,17 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+
 
 import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 
-import login from './components/UserLogin.vue'
-import About from "./components/About.vue";
-import App from './App.vue'
-
-const routes = [
-    { path: '/',  redirect: '/login' },
-    { path: '/login', component: login },
-    { path: '/about', component: About },
-]
-
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
-})
-
+import App from '@/App.vue'
+import router from '@/route.js'
 
 const app = createApp(App)
+
 app.use(router)
-app.use(ElementPlus, { size: 'small', zIndex: 3000 })
+app.use(ElementPlus, {  locale: zhCn })
 
 app.mount('#app')
 
