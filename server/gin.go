@@ -12,10 +12,41 @@ import (
 	"syscall"
 )
 
+type Request struct {
+	ApiType     string
+	RequestData map[string]interface{}
+}
+
 type Response struct {
-	Code int
-	Data interface{}
-	Msg  string
+	Request
+
+	ResponseCode int
+	ResponseData map[string]interface{}
+
+	ErrMsg    string
+	ErrSource string
+
+	c *gin.Context
+}
+
+func NewResponse(c *gin.Context) (r Response, err error) {
+	r.c = c
+	r.RequestData = make(map[string]interface{})
+	r.ResponseData = make(map[string]interface{})
+	err = c.ShouldBindJSON(&r.Request)
+	return
+}
+
+func (r *Response) Ok() {
+	r.ResponseCode = 0
+	r.c.JSON(http.StatusOK, r)
+}
+
+func (r *Response) Error(errMsg, errSource string) {
+	r.ResponseCode = 1
+	r.ErrMsg = errMsg
+	r.ErrSource = errSource
+	r.c.JSON(http.StatusOK, r)
 }
 
 func InitGin() {
@@ -70,15 +101,6 @@ func InitGin() {
 	return
 }
 
-//显示页面错误信息
-func showHtmlError(c *gin.Context, err error) {
-	c.JSON(200, gin.H{
-		"success": false,
-		"error":   err.Error(),
-	})
-	return
-}
-
 // mime 设置
 func mimeType() (err error) {
 	err = mime.AddExtensionType(".css", "text/css; charset=utf-8")
@@ -101,51 +123,25 @@ func DoApi(c *gin.Context) {
 func Login(c *gin.Context) {
 	db := GetDateBase()
 	log := GetLogger()
-
-	doInfo := make(map[string]interface{})
-	log.Debug("Login:", doInfo)
-
-	err := c.ShouldBindJSON(&doInfo)
+	r, err := NewResponse(c)
 	if err != nil {
 		log.Error(err)
 	}
-
-	userName := doInfo["username"].(string)
-	passWord := doInfo["password"].(string)
-
-	var u SysUser
-	var count int64
-	db.Find(&SysUser{UserName: userName}).Count(&count)
-	if count == 0 {
-		responseErr(c, doInfo, "用户名不存在！")
+	//log.Debug("Login:", r)
+	userName, _ := r.RequestData["username"].(string)
+	passWord, _ := r.RequestData["password"].(string)
+	var users []SysUser
+	db.Where(&SysUser{UserName: userName}).Find(&users)
+	if len(users) == 0 {
+		r.Error("用户名不存在！", "username")
 	} else {
-		db.Find(&SysUser{UserName: userName}).First(&u)
+		user := users[0]
 		pwd := fmt.Sprintf("%x", md5.Sum([]byte(passWord)))
-		if pwd == u.PassWord {
-			responseOk(c, doInfo)
+		if pwd == user.PassWord {
+			r.Ok()
 		} else {
-			responseErr(c, doInfo, "密码错误！")
+			r.Error("密码错误！", "password")
 		}
 	}
-
-	//s, _ := json.Marshal(doInfo)
-	//fmt.Println("Login :")
-	//fmt.Println(string(s))
-
-	//Global.Logger.Debug("Login :", doInfo)
-	//responseOk(c, doInfo)
 	return
-
-}
-func responseOk(c *gin.Context, data map[string]interface{}) {
-	data["返回代码"] = 0
-	c.JSON(http.StatusOK, data)
-
-}
-
-func responseErr(c *gin.Context, data map[string]interface{}, err string) {
-	data["返回代码"] = 1
-	data["返回错误信息"] = err
-	c.JSON(http.StatusOK, data)
-
 }

@@ -14,3 +14,50 @@
 2022-07-29T17:40:37.471+0800	DEBUG	server/gin.go:106	Login:map[]
 2022-07-29T17:41:33.454+0800	INFO	server/gin.go:68	退出程序
 2022-07-29T17:41:51.882+0800	INFO	server/gin.go:68	退出程序
+2022-08-01T16:00:34.391+0800	DEBUG	server/gin.go:131	Login:{{ map[RequestData:map[password:123 username:123] apitype:login]} 0 map[]   0xc0002f6100}
+2022-08-01T16:00:41.211+0800	DEBUG	server/gin.go:131	Login:{{ map[RequestData:map[password:123 username:123] apitype:login]} 0 map[]   0xc0002f6100}
+2022-08-01T16:02:12.874+0800	INFO	server/gin.go:98	退出程序
+2022-08-01T16:02:30.592+0800	DEBUG	server/gin.go:132	Login:{{ map[RequestData:map[password:123 username:123] apitype:login]} 0 map[]   0xc00054a100}
+2022-08-01T16:03:54.655+0800	DEBUG	server/gin.go:132	Login:{{ map[RequestData:map[password:a123 username:1啊23] apitype:login]} 0 map[]   0xc00054a700}
+2022-08-01T16:06:43.272+0800	INFO	server/gin.go:99	退出程序
+2022-08-01T16:07:10.238+0800	DEBUG	server/gin.go:132	Login:{{ map[RequestData:map[password:a123 username:1啊23] apitype:login]} 0 map[]   0xc000622300}
+2022-08-01T16:07:10.270+0800	DEBUG	server/gin.go:133	map[RequestData:map[password:a123 username:1啊23] apitype:login]
+2022-08-01T16:07:10.271+0800	DEBUG	server/gin.go:135	false
+2022-08-01T16:07:10.271+0800	DEBUG	server/gin.go:137	false
+2022-08-01T16:11:32.735+0800	DEBUG	server/gin.go:132	Login:{{login map[password:a123 username:1啊23]} 0 map[]   0xc0005aa100}
+2022-08-01T16:11:32.774+0800	DEBUG	server/gin.go:133	map[password:a123 username:1啊23]login
+2022-08-01T16:11:32.775+0800	DEBUG	server/gin.go:135	1啊23true
+2022-08-01T16:11:32.786+0800	DEBUG	server/gin.go:137	a123true
+2022-08-01T16:12:54.790+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:123]} 0 map[]   0xc0005aa100}
+2022-08-01T16:12:54.792+0800	DEBUG	server/gin.go:133	map[password:123 username:123]
+2022-08-01T16:12:54.793+0800	DEBUG	server/gin.go:135	123true
+2022-08-01T16:12:54.794+0800	DEBUG	server/gin.go:137	123true
+2022-08-01T16:36:23.654+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:123]} 0 map[]   0xc0000a8500}
+2022-08-01T16:36:23.657+0800	DEBUG	server/gin.go:133	map[password:123 username:123]
+2022-08-01T16:36:23.658+0800	DEBUG	server/gin.go:135	123true
+2022-08-01T16:36:23.659+0800	DEBUG	server/gin.go:137	123true
+2022-08-01T16:45:59.864+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:123]} 0 map[]   0xc0000a8600}
+2022-08-01T16:45:59.867+0800	DEBUG	server/gin.go:133	map[password:123 username:123]
+2022-08-01T16:45:59.869+0800	DEBUG	server/gin.go:135	123true
+2022-08-01T16:45:59.880+0800	DEBUG	server/gin.go:137	123true
+2022-08-01T16:48:30.532+0800	DEBUG	server/gin.go:132	Login:{{ map[password:admin username:admin]} 0 map[]   0xc0000a8800}
+2022-08-01T16:48:30.532+0800	DEBUG	server/gin.go:133	map[password:admin username:admin]
+2022-08-01T16:48:30.533+0800	DEBUG	server/gin.go:135	admintrue
+2022-08-01T16:48:30.533+0800	DEBUG	server/gin.go:137	admintrue
+2022-08-01T16:57:10.602+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:123]} 0 map[]   0xc0000a8600}
+2022-08-01T16:57:10.634+0800	DEBUG	server/gin.go:133	map[password:123 username:123]
+2022-08-01T16:57:10.635+0800	DEBUG	server/gin.go:135	123true
+2022-08-01T16:57:10.637+0800	DEBUG	server/gin.go:137	123true
+2022-08-01T16:57:18.312+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:admin]} 0 map[]   0xc0000a8600}
+2022-08-01T16:57:18.312+0800	DEBUG	server/gin.go:133	map[password:123 username:admin]
+2022-08-01T16:57:18.312+0800	DEBUG	server/gin.go:135	admintrue
+2022-08-01T16:57:18.313+0800	DEBUG	server/gin.go:137	123true
+2022-08-01T16:57:24.510+0800	DEBUG	server/gin.go:132	Login:{{ map[password:admin username:admin]} 0 map[]   0xc0000a8600}
+2022-08-01T16:57:24.511+0800	DEBUG	server/gin.go:133	map[password:admin username:admin]
+2022-08-01T16:57:24.511+0800	DEBUG	server/gin.go:135	admintrue
+2022-08-01T16:57:24.511+0800	DEBUG	server/gin.go:137	admintrue
+2022-08-01T17:02:44.686+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:13]} 0 map[]   0xc0000ce300}
+2022-08-01T17:02:52.554+0800	DEBUG	server/gin.go:132	Login:{{ map[password:123 username:admin]} 0 map[]   0xc000626500}
+2022-08-01T17:02:56.552+0800	DEBUG	server/gin.go:132	Login:{{ map[password:admin username:admin]} 0 map[]   0xc000626500}
+2022-08-01T17:14:19.539+0800	INFO	server/gin.go:99	退出程序
+2022-08-01T17:14:32.113+0800	INFO	server/gin.go:99	退出程序
