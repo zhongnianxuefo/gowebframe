@@ -1,4 +1,4 @@
-# web
+# antd-demo
 
 ## Project setup
 ```

@@ -1,9 +1,7 @@
 import { createApp } from 'vue'
 
-
-import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import 'element-plus/dist/index.css'
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 
 import App from '@/App.vue'
 import router from '@/base/route'
@@ -11,7 +9,7 @@ import router from '@/base/route'
 const app = createApp(App)
 
 app.use(router)
-app.use(ElementPlus, {  locale: zhCn })
+app.use(Antd)
 
 app.mount('#app')
 
