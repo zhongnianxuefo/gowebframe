@@ -1,3 +1,14 @@
 2022-07-29T15:04:03.183+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(MISSING) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(MISSING)": invalid syntax)
 2022-07-29T15:05:48.527+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(MISSING) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(MISSING)": invalid syntax)
 2022-07-29T15:08:28.461+0800	ERROR	server/main.go:30	打开数据库失败！cannot parse `host=127.0.0.1 user=openpg password=xxxxx dbname=my port=%!s(int=5432) sslmode=disable TimeZone=Asia/Shanghai`: invalid port (strconv.ParseUint: parsing "%!s(int=5432)": invalid syntax)
+2022-08-10T13:18:28.362+0800	ERROR	server/gin.go:165	invalid character 'A' looking for beginning of object key string
+2022-08-10T13:20:17.735+0800	ERROR	server/gin.go:165	invalid character 'A' looking for beginning of object key string
+2022-08-10T13:21:11.759+0800	ERROR	server/gin.go:156	invalid character 'A' looking for beginning of object key string
+2022-08-10T13:22:08.156+0800	ERROR	server/gin.go:154	invalid character 'A' looking for beginning of object key string
+2022-08-10T13:24:11.758+0800	ERROR	server/gin.go:152	invalid character 't' looking for beginning of object key string
+2022-08-10T13:25:32.578+0800	ERROR	server/gin.go:155	invalid character 't' looking for beginning of object key string
+2022-08-10T13:26:50.845+0800	ERROR	server/gin.go:155	invalid character 'T' looking for beginning of object key string
+2022-08-10T13:29:14.426+0800	ERROR	server/gin.go:155	invalid character 'T' looking for beginning of object key string
+2022-08-10T13:34:07.535+0800	ERROR	server/gin.go:161	invalid character 't' looking for beginning of object key string
+2022-08-10T13:37:55.548+0800	ERROR	server/gin.go:180	invalid character ']' looking for beginning of value
+2022-08-10T13:39:22.043+0800	ERROR	server/gin.go:180	invalid character ']' looking for beginning of value

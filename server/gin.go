@@ -41,7 +41,11 @@ func (r *Response) Ok() {
 	r.ResponseCode = 0
 	r.c.JSON(http.StatusOK, r)
 }
-
+func (r *Response) OkWithData(data map[string]interface{}) {
+	r.ResponseCode = 0
+	r.ResponseData = data
+	r.c.JSON(http.StatusOK, r)
+}
 func (r *Response) Error(errMsg, errSource string) {
 	r.ResponseCode = 1
 	r.ErrMsg = errMsg
@@ -138,7 +142,29 @@ func Login(c *gin.Context) {
 		user := users[0]
 		pwd := fmt.Sprintf("%x", md5.Sum([]byte(passWord)))
 		if pwd == user.PassWord {
-			r.Ok()
+			jsonData := `
+			{
+				"AllMenus":[
+				  {"title":"首页", "icon":"home-outlined", "page":"home"},
+				  {"title":"基础资料", "icon":"user-outlined", "subMenus":[
+					  {"title":"客户信息", "icon":"team-outlined", "page":"list","module":"客户信息"},
+					  {"title":"工厂信息",  "page":"list","module":"工厂信息"},
+					  {"title":"产品信息", "icon":"database-outlined", "page":"list","module":"产品信息"}
+					]},
+				  {"title":"业务相关",  "subMenus":[
+					  {"title":"外销合同",  "page":"list","module":"外销合同"},
+					  {"title":"采购合同",  "page":"list","module":"采购合同"}
+					]}
+				]
+			}
+			`
+			var data map[string]interface{}
+			err = json.Unmarshal([]byte(jsonData), &data)
+			if err != nil {
+				log.Error(err)
+			}
+			log.Info(data)
+			r.OkWithData(data)
 		} else {
 			r.Error("密码错误！", "password")
 		}
