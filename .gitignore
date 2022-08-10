@@ -6,6 +6,9 @@ server/*.exe
 # server 目录 GoLand
 server/.idea/*
 
+# server 目录 log
+server/log/*
+
 # linux 运行文件
 
 # web 目录 node 模块
