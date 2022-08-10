@@ -1,7 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  outputDir: '../server/web',
   transpileDependencies: true,
+  outputDir: '../server/web',
   devServer: {
     port: 8065,   //指定端口号以侦听
     proxy: {

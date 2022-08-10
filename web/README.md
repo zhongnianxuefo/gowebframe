@@ -1,4 +1,4 @@
-# antd-demo
+# vue-ts
 
 ## Project setup
 ```
