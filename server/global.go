@@ -19,6 +19,10 @@ type SoftwareConfig struct {
 	DatabaseName     string
 
 	LogDirectory string
+
+	JwtSigningKey  string
+	JwtExpiresTime int64
+	JwtIssuer      string
 }
 
 type GlobalVar struct {
@@ -55,14 +59,18 @@ func InitGlobalVar(configFile string) {
 // getConfigFromYaml 从配置文件中读取软件配置文件
 func getConfigFromYaml(configFile string) (config SoftwareConfig, err error) {
 
-	//config.Port = 8060
+	config.Port = 8060
 	//config.DatabaseType = "postgres"
 	//config.DatabaseHost = "127.0.0.1"
 	//config.DatabasePort = 5432
 	//config.DatabaseUser = "openpg"
 	//config.DatabasePassword = "openpgpwd"
 	//config.DatabaseName = "my"
-	//config.LogDirectory = "./log"
+	config.LogDirectory = "./log"
+
+	config.JwtSigningKey = "go web frame"
+	config.JwtExpiresTime = 5 * 60
+	config.JwtIssuer = "go web frame"
 
 	yamlFile, err := ioutil.ReadFile(configFile)
 	if err != nil {

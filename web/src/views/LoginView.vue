@@ -64,18 +64,30 @@ const formState = reactive<FormState> ({
 
 const onFinish = (values: any) => {
   if (values) {
-     request.login(values).then(onRequestOK).catch(onRequestErr);
+     request.login(values, onRequestOK);
+     // .then(onRequestOK).catch(onRequestErr);
   }
 };
 const onRequestOK=(r:any) => {
   console.log('Request OK:', r);
   if (r.data["ResponseCode"]==0) {
-    let AllMenus = r.data["ResponseData"]["AllMenus"]
-    store.commit("setAllMenus", AllMenus)
-    router.push("/home")
+    let token = r.data["Token"]
+    store.commit("setToken", token)
+    request.do(token, "getAllMenus",{}).then(onTestRequestOK).catch(onRequestErr);
+
+
   }else{
     message.error(r.data["ErrMsg"]);
   }
+}
+const onTestRequestOK=(r:any) => {
+  console.log('TestRequestOK OK:', r);
+  if (r.data["ResponseCode"]==0) {
+    let allMenus = r.data["ResponseData"]["AllMenus"]
+    store.commit("setAllMenus", allMenus)
+    router.push("/home")
+  }
+
 }
 const onRequestErr = (error:any) => {
   console.log("Request Err:",error);
