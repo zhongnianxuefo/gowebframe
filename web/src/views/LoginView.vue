@@ -49,7 +49,7 @@ import request from '../request'
 
 import { useStore } from 'vuex' // 引入useStore 方法
 const store = useStore()  // 该方法用于返回store 实例
-console.log(store, store.state.allMenus)  // store 实例对象
+// console.log(store, store.state.allMenus)  // store 实例对象
 
 interface FormState {
   username: string;
@@ -64,43 +64,29 @@ const formState = reactive<FormState> ({
 
 const onFinish = (values: any) => {
   if (values) {
-     request.login(values, onRequestOK);
-     // .then(onRequestOK).catch(onRequestErr);
+    request.login(values, onLoginOK);
+    // .then(onRequestOK).catch(onRequestErr);
   }
 };
-const onRequestOK=(r:any) => {
-  console.log('Request OK:', r);
-  if (r.data["ResponseCode"]==0) {
-    let token = r.data["Token"]
-    store.commit("setToken", token)
-    request.do(token, "getAllMenus",{}).then(onTestRequestOK).catch(onRequestErr);
-
-
-  }else{
-    message.error(r.data["ErrMsg"]);
-  }
-}
-const onTestRequestOK=(r:any) => {
-  console.log('TestRequestOK OK:', r);
-  if (r.data["ResponseCode"]==0) {
-    let allMenus = r.data["ResponseData"]["AllMenus"]
-    store.commit("setAllMenus", allMenus)
-    router.push("/home")
-  }
-
-}
-const onRequestErr = (error:any) => {
-  console.log("Request Err:",error);
-  message.error("登录失败，请检查网络连接情况！");
+const onLoginOK=(r:any) => {
+  console.log('LoginOK OK:', r)
+  let token = r["Token"]
+  store.commit("account/setToken", token )
+  request.do(token, "getAllMenus",{},onGetAllMenus);
 }
 
-const onFinishFailed = (errorInfo:any) => {
-  console.log('Finish Failed:', errorInfo);
-};
+const onGetAllMenus=(r:any) => {
+  let allMenus = r["ResponseData"]["AllMenus"]
+  store.commit("account/setAllMenus", allMenus)
+  router.push("/home")
+}
 
 const resetForm = () => {
   formRef.value.resetFields();
 };
 
+const onFinishFailed = (errorInfo:any) => {
+  console.log('Finish Failed:', errorInfo);
+};
 
 </script>

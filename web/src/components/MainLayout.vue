@@ -61,6 +61,7 @@ import router from "../router"
 import SideMenu from "./SideMenu.vue"
 import {useRoute} from "vue-router";
 import { useStore } from 'vuex'
+import request from "@/request";
 
 // const route = useRoute()
 const store = useStore()
@@ -69,16 +70,13 @@ const allMenus = ref([
   {title:"首页", icon:"home-outlined", page:"home", menuKey:"home", hasSubmenu:false},
 ]);
 allMenus.value = getAllMenuPara()
-const collapsed = ref<boolean>(store.state.collapsed);
+const collapsed = ref<boolean>(store.getters["setting/getCollapsed"]);
+console.log(store.getters["setting/getCollapsed"])
 
 const selectedKey = getSelectedKey();
 const selectedKeys = ref<string[]>([selectedKey]);
 const openKey = getOpenMenuKey(allMenus.value,selectedKey,collapsed.value);
 const openKeys = ref<string[]>([openKey]);
-
-
-
-
 
 
 // console.log(global)
@@ -90,13 +88,8 @@ const openKeys = ref<string[]>([openKey]);
 
 
 
-
-
-
-
-
 const setCollapsed= (c:boolean) => {
-  store.commit("setCollapsed", c)
+  store.commit("setting/setCollapsed", c)
   collapsed.value = c;
 
 }
@@ -120,7 +113,7 @@ const onMenuClick= (menu:any) => {
 
 function getAllMenuPara():any{
   const store = useStore()
-  let menus = store.state.allMenus
+  let menus = store.getters["account/getAllMenus"]
   return doMenuPara(menus);
 }
 

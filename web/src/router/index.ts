@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
-
+import request from "@/request";
+import {useStore} from "vuex";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     name: 'home',
-    component: ()=>import("../views/HomeView.vue")
+    component: ()=>import("../views/HomeView.vue"),
   },
   {
     path: '/list/:module/',
